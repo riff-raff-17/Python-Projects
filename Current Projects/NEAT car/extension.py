@@ -1,5 +1,4 @@
-# Credit to Marc Pinet https://github.com/MaxRohowsky/DriveAI?tab=readme-ov-file
-# Please see LICENSE file for license information
+# Same as final, but includes statistics reporter and time based generations
 
 import pygame
 import os
@@ -8,6 +7,8 @@ import sys
 import neat
 import time
 
+pygame.init()
+
 SCREEN_WIDTH = 1244
 SCREEN_HEIGHT = 1016
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -15,6 +16,7 @@ TIME_LIMIT = 10
 
 TRACK = pygame.image.load(os.path.join("Assets", "track.png"))
 
+FONT = pygame.font.Font('freesansbold.ttf', 20)
 
 class Car(pygame.sprite.Sprite):
     def __init__(self):
@@ -43,10 +45,10 @@ class Car(pygame.sprite.Sprite):
 
     def collision(self):
         length = 40
-        collision_point_right = [int(self.rect.center[0] + math.cos(math.radians(self.angle + 18)) * length),
+        collision_point_right = [int(self.rect.center[0] + math.cos(math.radians(self.angle + 18)) * length), \
                                  int(self.rect.center[1] - math.sin(math.radians(self.angle + 18)) * length)]
-        collision_point_left = [int(self.rect.center[0] + math.cos(math.radians(self.angle - 18)) * length),
-                                int(self.rect.center[1] - math.sin(math.radians(self.angle - 18)) * length)]
+        collision_point_left = [int(self.rect.center[0] + math.cos(math.radians(self.angle - 18)) * length), \
+                                 int(self.rect.center[1] - math.sin(math.radians(self.angle - 18)) * length)]
 
         # Die on Collision
         if SCREEN.get_at(collision_point_right) == pygame.Color(2, 105, 31, 255) \
@@ -82,7 +84,7 @@ class Car(pygame.sprite.Sprite):
         pygame.draw.line(SCREEN, (255, 255, 255, 255), self.rect.center, (x, y), 1)
         pygame.draw.circle(SCREEN, (0, 255, 0, 0), (x, y), 3)
 
-        dist = int(math.sqrt(math.pow(self.rect.center[0] - x, 2)
+        dist = int(math.sqrt(math.pow(self.rect.center[0] - x, 2) \
                              + math.pow(self.rect.center[1] - y, 2)))
 
         self.radars.append([radar_angle, dist])
@@ -93,12 +95,10 @@ class Car(pygame.sprite.Sprite):
             input[i] = int(radar[1])
         return input
 
-
 def remove(index):
     cars.pop(index)
     ge.pop(index)
     nets.pop(index)
-
 
 def eval_genomes(genomes, config):
     global cars, ge, nets
@@ -116,6 +116,16 @@ def eval_genomes(genomes, config):
 
     run = True
     timer = time.time()
+
+    def statistics():
+        global ge
+
+        text_1 = FONT.render(f'Cars: {len(cars)}', True, (0, 0, 0))
+        text_2 = FONT.render(f'Generation: {pop.generation+1}', True, (0, 0, 0))
+
+        SCREEN.blit(text_1, (50, 50))
+        SCREEN.blit(text_2, (50, 80))
+
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -147,7 +157,9 @@ def eval_genomes(genomes, config):
             car.update()
         caption = (f"Time Left: {round(TIME_LIMIT - (time.time() - timer), 2)}s")
         pygame.display.set_caption(caption)
+        statistics()
         pygame.display.update()
+
 
 
 # Setup NEAT Neural Network
@@ -168,7 +180,6 @@ def run(config_path):
     pop.add_reporter(stats)
 
     pop.run(eval_genomes, 50)
-
 
 if __name__ == '__main__':
     local_dir = os.path.dirname(__file__)
