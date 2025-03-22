@@ -84,5 +84,3 @@ Game Rules
 3. Any live cell with more than three live neighbors dies (overpopulation).
 4. Any dead cell with exactly three live neighbors becomes alive (reproduction).
 
-## L4 Trial
-
