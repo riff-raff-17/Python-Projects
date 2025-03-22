@@ -7,7 +7,8 @@ import numpy as np
 
 #Connect to UGOT and open camera
 got = ugot.UGOT()
-got.initialize('192.168.1.196')
+ip_add = input("What is the UGOT IP address? >")
+got.initialize(ip_add)
 got.open_camera()
 
 pygame.init()

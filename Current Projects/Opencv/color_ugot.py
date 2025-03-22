@@ -6,7 +6,8 @@ from ugot import ugot
 
 #Connect to UGOT and open camera
 got = ugot.UGOT()
-got.initialize('192.168.1.196')
+ip_add = input("What is the UGOT IP address? >")
+got.initialize(ip_add)
 got.open_camera()
 
 # Start a while loop 
