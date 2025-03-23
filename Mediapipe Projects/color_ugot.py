@@ -11,7 +11,7 @@ got.initialize(ip_add)
 got.open_camera()
 
 # Start a while loop 
-while(1): 
+while True: 
     
     imageFrame = got.read_camera_data()
 
