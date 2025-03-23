@@ -44,8 +44,8 @@ Statistics:
 3. If the car collides with a track boundary, it is removed.
 4. The simulation ends when all cars crash or time runs out.
 
-## OpenCV
-This directory contains various image recognition projects using OpenCV. Current projects include:
+## Mediapipe
+This directory contains various image recognition projects using MediaPipe. Current projects include:
 
 **🎨 Color Recognition with UGOT**
 - Recognizes RGB colors using OpenCV.
@@ -58,6 +58,10 @@ This directory contains various image recognition projects using OpenCV. Current
 **🦾Mechanical Arm Control**
 - Adapted from the catching game.
 - Uses hand movement data to control a mechanical arm.
+
+ **👨Facial Recognition**
+- rec_face.py has both simple facial recognition (face present or not) as well as the facial mesh for even more precise facial recognition 
+- id_face.py allows recognition of specific faces uploaded into faces folder
 
 ## Conway's Game of Life
 
