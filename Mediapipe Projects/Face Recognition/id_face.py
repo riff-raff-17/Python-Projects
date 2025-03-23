@@ -1,4 +1,4 @@
-'''use dlib==19.24.2'''
+'''check requirements'''
 
 import cv2
 import face_recognition
