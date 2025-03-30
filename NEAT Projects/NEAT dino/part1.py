@@ -1,5 +1,5 @@
-# Create the dinosaur class and make the dinosaur jump
-# The dinosaur can jump but there is no background or score
+'''Create the dinosaur class and make the dinosaur jump
+The dinosaur can jump but there is no background or score'''
 
 #1_______________________________________________________________________________________________________________________
 

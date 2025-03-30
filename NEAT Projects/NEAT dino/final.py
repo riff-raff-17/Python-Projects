@@ -1,4 +1,4 @@
-# Making the point limit scale with the generation
+'''Making the point limit scale with the generation'''
 
 import pygame
 import os

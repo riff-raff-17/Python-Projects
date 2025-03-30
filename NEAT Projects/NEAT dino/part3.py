@@ -1,8 +1,7 @@
-# Adding the NEAT algorithm to the game
-# Dino takes in two inputs: the distance to the next cactus and the height of the next cactus
-# Add in the NEAT algorithm to the game first
-# Then change the main function to eval_genomes
-# pain
+'''Adding the NEAT algorithm to the game
+Dino takes in two inputs: the distance to the next cactus and the height of the next cactus
+Add in the NEAT algorithm to the game first
+Then change the main function to eval_genomes'''
 
 import pygame
 import os

@@ -1,7 +1,7 @@
-# Cleaning up the code
-# Added line from dinosaur to obstacle and hitbox 
-# Added statistics 
-# Added ability to write population size to config file
+'''Cleaning up the code
+Added line from dinosaur to obstacle and hitbox 
+Added statistics 
+Added ability to write population size to config file'''
 
 import pygame
 import os

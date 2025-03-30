@@ -1,4 +1,4 @@
-# Add the background and the score to the game
+'''Add the background and the score to the game'''
 
 import pygame
 import os
