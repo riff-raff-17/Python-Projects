@@ -178,7 +178,7 @@ def eval_genomes(genomes, config): # rename main to eval_genomes
             dinosaur.update()
             dinosaur.draw(SCREEN)
 
-        if len(dinosaurs) == 0 or points > 2000: # +
+        if len(dinosaurs) == 0 or points > 4000: # +
             break
 
         if len(obstacles) == 0:
