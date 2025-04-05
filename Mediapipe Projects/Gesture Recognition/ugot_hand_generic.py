@@ -4,14 +4,14 @@ import mediapipe as mp
 from ugot import ugot
 import numpy as np 
 
-#Connect to UGOT and open camera
+# Connect to UGOT and open camera
 got = ugot.UGOT()
 ip_add = input("What is the UGOT IP address? >")
 got.initialize(ip_add)
 got.open_camera()
 
 # Initializing the Model 
-mpHands = mp.solutions.hands 
+mpHands = mp.solutions.hands
 hands = mpHands.Hands( 
     static_image_mode=False, 
     model_complexity=1, 
@@ -31,7 +31,7 @@ while True:
 
     # Turns it into a numpy array
     nparr = np.frombuffer(frame, np.uint8)
-    data = cv2.imdecode(nparr,cv2.IMREAD_COLOR)
+    data = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
   
     # Flip image 
     frame = cv2.flip(data, 1)
