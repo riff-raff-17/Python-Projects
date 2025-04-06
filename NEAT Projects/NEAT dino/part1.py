@@ -67,10 +67,10 @@ class Dinosaur:
 #1_______________________________________________________________________________________________________________________
 
 def main():
-    clock = pygame.time.Clock() 
+    clock = pygame.time.Clock()
 
     dinosaurs = [Dinosaur()]
-    
+
     run = True
     while run:
         for event in pygame.event.get():
