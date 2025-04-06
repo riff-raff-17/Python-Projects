@@ -110,9 +110,9 @@ def main():
     dinosaurs = [Dinosaur()]
 
     # +
-    x_pos_bg = 0 
-    y_pos_bg = 380 
-    game_speed = 20 
+    x_pos_bg = 0
+    y_pos_bg = 380
+    game_speed = 20
 
     def score():
         global points, game_speed
@@ -149,13 +149,12 @@ def main():
         if len(dinosaurs) == 0:
             break
 
-
         if len(obstacles) == 0:
             if random.randint(0, 1) == 0:
                 obstacles.append(SmallCactus(SMALL_CACTUS, random.randint(0, 2)))
             else:
                 obstacles.append(LargeCactus(LARGE_CACTUS, random.randint(0, 2)))
-        
+
         for obstacle in obstacles:
             obstacle.draw(SCREEN)
             obstacle.update()
