@@ -1,5 +1,6 @@
 '''Adding the NEAT algorithm to the game
-Dino takes in two inputs: the distance to the next cactus and the height of the next cactus
+Dino takes in two inputs: the distance to the next cactus 
+and the height of the next cactus
 
 Add in the run() function first
 Then change the main function to eval_genomes'''
@@ -113,7 +114,7 @@ def distance(pos_a, pos_b):
 def eval_genomes(genomes, config): # rename main to eval_genomes
     global game_speed, x_pos_bg, y_pos_bg, points, dinosaurs, obstacles, ge, nets # add ge, nets
     clock = pygame.time.Clock()
-    points = 0 
+    points = 0
 
     obstacles = []
     dinosaurs = [] # delete Dinosaur()
@@ -185,8 +186,8 @@ def eval_genomes(genomes, config): # rename main to eval_genomes
 
         # +
         for i, dinosaur in enumerate(dinosaurs):
-            output = nets[i].activate((dinosaur.rect.y, 
-                                       distance((dinosaur.rect.x, dinosaur.rect.y),
+            output = nets[i].activate((dinosaur.rect.y,
+                                        distance((dinosaur.rect.x, dinosaur.rect.y),
                                         obstacle.rect.midtop)))
             if output[0] > 0.5 and dinosaur.rect.y == dinosaur.Y_POS:
                 dinosaur.dino_jump = True
@@ -194,15 +195,15 @@ def eval_genomes(genomes, config): # rename main to eval_genomes
 
         # +
 
-        score() 
-        background() 
+        score()
+        background()
         clock.tick(60)
         pygame.display.update()
 
 # Setting up NEAT step 1
 def run(config_path):
     config = neat.config.Config(
-        neat.DefaultGenome, 
+        neat.DefaultGenome,
         neat.DefaultReproduction,
         neat.DefaultSpeciesSet,
         neat.DefaultStagnation,

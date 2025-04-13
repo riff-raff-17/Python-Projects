@@ -117,7 +117,7 @@ def distance(pos_a, pos_b):
 def eval_genomes(genomes, config): # rename main to eval_genomes
     global game_speed, x_pos_bg, y_pos_bg, points, dinosaurs, obstacles, ge, nets # add ge, nets
     clock = pygame.time.Clock()
-    points = 0 
+    points = 0
 
     obstacles = []
     dinosaurs = [] # delete Dinosaur()
