@@ -99,17 +99,14 @@ class LargeCactus(Obstacle):
 def remove(index):
     dinosaurs.pop(index)
 
-# +
-
 def main():
     global game_speed, x_pos_bg, y_pos_bg, points, dinosaurs, obstacles # + 
     clock = pygame.time.Clock()
-    points = 0 # +
+    points = 0
 
-    obstacles = [] # ++
+    obstacles = []
     dinosaurs = [Dinosaur()]
 
-    # +
     x_pos_bg = 0
     y_pos_bg = 380
     game_speed = 20
@@ -130,8 +127,7 @@ def main():
         if x_pos_bg <= -image_width:
             x_pos_bg = 0
         x_pos_bg -= game_speed
-    # +
-    
+
     run = True
     while run:
         for event in pygame.event.get():
@@ -145,7 +141,6 @@ def main():
             dinosaur.update()
             dinosaur.draw(SCREEN)
 
-        # ++
         if len(dinosaurs) == 0:
             break
 
@@ -161,7 +156,6 @@ def main():
             for i, dinosaur in enumerate(dinosaurs):
                 if dinosaur.rect.colliderect(obstacle.rect):
                     remove(i)
-        # ++
 
         user_input = pygame.key.get_pressed()
 
@@ -171,10 +165,10 @@ def main():
                 dinosaur.dino_run = False
 
 
-        score() # +
-        background() # +
+        score()
+        background()
         clock.tick(60)
         pygame.display.update()
 
 main()
-print(f"You scored {points} points!") # +
+print(f"You scored {points} points!")

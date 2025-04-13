@@ -124,9 +124,9 @@ def eval_genomes(genomes, config): # rename main to eval_genomes
     ge = [] # +
     nets = [] # +
 
-    x_pos_bg = 0 
-    y_pos_bg = 380 
-    game_speed = 20 
+    x_pos_bg = 0
+    y_pos_bg = 380
+    game_speed = 20
 
     # +
     for genome_id, genome in genomes:
