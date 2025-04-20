@@ -172,7 +172,7 @@ def eval_genomes(genomes, config): # rename main to eval_genomes
                 obstacles.append(SmallCactus(SMALL_CACTUS, random.randint(0, 2)))
             else:
                 obstacles.append(LargeCactus(LARGE_CACTUS, random.randint(0, 2)))
-        
+
         for obstacle in obstacles:
             obstacle.draw(SCREEN)
             obstacle.update()
@@ -180,7 +180,7 @@ def eval_genomes(genomes, config): # rename main to eval_genomes
                 if dinosaur.rect.colliderect(obstacle.rect):
                     ge[i].fitness -= 1 # +
                     remove(i)
-        
+
         # Delete user input
         # user_input = pygame.key.get_pressed() 
 
