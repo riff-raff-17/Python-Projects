@@ -44,6 +44,53 @@ Statistics:
 3. If the car collides with a track boundary, it is removed.
 4. The simulation ends when all cars crash or time runs out.
 
+## 🧭 Pathfinding Visualization
+
+This project is a visual representation of the A* pathfinding algorithm, showing how it efficiently finds the shortest path from a start point to a goal on a grid, while avoiding obstacles.
+
+### Features
+
+- Visualizes the step-by-step process of A* pathfinding
+- Supports grid editing: add/remove obstacles
+- Interactive start and end node placement
+- Highlights open and closed sets in real-time
+- Shows final path after successful search
+
+A* is a popular graph traversal and pathfinding algorithm used in games, robotics, and navigation systems. It combines:
+
+- g(n): the cost from the start node to the current node
+- h(n): the heuristic estimate from the current node to the end
+- f(n) = g(n) + h(n): total estimated cost of the cheapest solution through n
+
+The default heuristic used is Manhattan distance. You can switch to Euclidean or Diagonal if needed.
+
+This visualizer shows:
+
+    🟧 Start node
+
+    🟦 End node
+
+    ⬛ Obstacles (walls)
+
+    🟩 Open set (nodes to be evaluated)
+
+    🟥 Closed set (nodes already evaluated)
+
+    🟪 Final path (shortest route found)
+
+### 🧹 'Roomba' pathfinding
+
+Simulates a Roomba-style robot navigating a 2D room and avoiding obstacles using intelligent pathfinding. Similar to the previous, using Pygame to visualize the path the Roomba takes.
+
+### Features
+
+- Roomba-like robot that moves from start to finish
+- Avoids obstacles (walls, furniture)
+- Efficient path planning using A* algorithm
+- Real-time visualization of robot movement 
+
+The visualizer shows how to robot navigates from start to end and can be interrupted and updated at any time.
+
 ## Mediapipe
 This directory contains various image recognition projects using MediaPipe. Current projects include:
 
