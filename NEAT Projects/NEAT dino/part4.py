@@ -104,38 +104,34 @@ class LargeCactus(Obstacle):
 
 def remove(index):
     dinosaurs.pop(index)
-    ge.pop(index) # +
-    nets.pop(index) # +
+    ge.pop(index)
+    nets.pop(index)
 
-# +
 def distance(pos_a, pos_b):
     dx = pos_a[0] - pos_b[0]
     dy = pos_a[1] - pos_b[1]
     return (dx ** 2 + dy ** 2) ** 0.5
-# +
 
-def eval_genomes(genomes, config): # rename main to eval_genomes
-    global game_speed, x_pos_bg, y_pos_bg, points, dinosaurs, obstacles, ge, nets # add ge, nets
+def eval_genomes(genomes, config):
+    global game_speed, x_pos_bg, y_pos_bg, points, dinosaurs, obstacles, ge, nets
     clock = pygame.time.Clock()
     points = 0
 
     obstacles = []
-    dinosaurs = [] # delete Dinosaur()
-    ge = [] # +
-    nets = [] # +
+    dinosaurs = []
+    ge = []
+    nets = []
 
     x_pos_bg = 0
     y_pos_bg = 380
     game_speed = 20
 
-    # +
     for genome_id, genome in genomes:
         dinosaurs.append(Dinosaur())
         ge.append(genome)
         net = neat.nn.FeedForwardNetwork.create(genome, config)
         nets.append(net)
         genome.fitness = 0
-    # +
 
     def score():
         global points, game_speed
@@ -178,7 +174,7 @@ def eval_genomes(genomes, config): # rename main to eval_genomes
             dinosaur.update()
             dinosaur.draw(SCREEN)
 
-        if len(dinosaurs) == 0 or points > 4000: # +
+        if len(dinosaurs) == 0 or points > 4000:
             break
 
         if len(obstacles) == 0:
@@ -195,7 +191,7 @@ def eval_genomes(genomes, config): # rename main to eval_genomes
             obstacle.update()
             for i, dinosaur in enumerate(dinosaurs):
                 if dinosaur.rect.colliderect(obstacle.rect):
-                    ge[i].fitness -= 1 # +
+                    ge[i].fitness -= 1
                     remove(i)
         
         # Delete user input
@@ -203,14 +199,12 @@ def eval_genomes(genomes, config): # rename main to eval_genomes
 
         # +
         for i, dinosaur in enumerate(dinosaurs):
-            output = nets[i].activate((dinosaur.rect.y, 
-                                       distance((dinosaur.rect.x, dinosaur.rect.y),
+            output = nets[i].activate((dinosaur.rect.y,
+                                        distance((dinosaur.rect.x, dinosaur.rect.y),
                                         obstacle.rect.midtop)))
             if output[0] > 0.5 and dinosaur.rect.y == dinosaur.Y_POS:
                 dinosaur.dino_jump = True
                 dinosaur.dino_run = False
-
-        # +
 
         statistics() # +
         score() 
@@ -220,9 +214,9 @@ def eval_genomes(genomes, config): # rename main to eval_genomes
 
 # Setting up NEAT
 def run(config_path):
-    global pop # +
+    global pop
     config = neat.config.Config(
-        neat.DefaultGenome, 
+        neat.DefaultGenome,
         neat.DefaultReproduction,
         neat.DefaultSpeciesSet,
         neat.DefaultStagnation,
