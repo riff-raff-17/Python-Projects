@@ -62,8 +62,8 @@ def eval_genomes():
         if sum(pygame.key.get_pressed()) <= 1:
             car.sprite.drive_state = False
             car.sprite.direction = 0 # +
-        
-        # Drive 
+
+        # Drive
         if user_input[pygame.K_UP]:
             car.sprite.drive_state = True
         
