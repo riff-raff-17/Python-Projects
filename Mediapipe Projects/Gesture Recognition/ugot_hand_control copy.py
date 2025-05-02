@@ -5,7 +5,7 @@ import numpy as np
 
 # Connect to UGOT and open camera
 got = ugot.UGOT()
-ip_add = input("What is the UGOT IP address? > ")
+ip_add = input("What is the UGOT IP address? >")
 got.initialize(ip_add)
 got.open_camera()
 
@@ -57,7 +57,7 @@ while True:
         if landmarkList:
             index_tip = landmarkList[8]  # Index finger tip
             index_base = landmarkList[5]  # Index finger base
-            hand_center = landmarkList[0]  # Palm center (wrist landmark)
+            hand_center = landmarkList[0] # Palm center (wrist landmark)
 
             angle = calculate_angle(index_tip, index_base)
             distance = calculate_distance(index_tip, hand_center)

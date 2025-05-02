@@ -50,22 +50,22 @@ while True:
     frame = cv2.flip(data, 1)
 
     # Convert BGR image to RGB image 
-    frameRGB = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB) 
+    frameRGB = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
     # Process the RGB image 
-    Process = hands.process(frameRGB) 
+    Process = hands.process(frameRGB)
 
-    landmarkList = [] 
+    landmarkList = []
     direction = ""
 
-    if Process.multi_hand_landmarks: 
-        for handlm in Process.multi_hand_landmarks: 
-            for _id, landmarks in enumerate(handlm.landmark): 
+    if Process.multi_hand_landmarks:
+        for handlm in Process.multi_hand_landmarks:
+            for _id, landmarks in enumerate(handlm.landmark):
                 height, width, _ = frame.shape
                 x, y = int(landmarks.x * width), int(landmarks.y * height)
                 landmarkList.append([_id, x, y])
 
-            Draw.draw_landmarks(frame, handlm, mpHands.HAND_CONNECTIONS) 
+            Draw.draw_landmarks(frame, handlm, mpHands.HAND_CONNECTIONS)
 
         # Detect index finger position
         if landmarkList:
@@ -77,7 +77,7 @@ while True:
             distance = calculate_distance(index_tip, hand_center)
 
             # Define minimum threshold distance
-            min_distance_threshold = 50  # Adjust based on camera setup
+            min_distance_threshold = 100  # Adjust based on camera setup
 
             if distance > min_distance_threshold:  # Only detect if above threshold
                 if -30 <= angle <= 30:  # Right
@@ -89,14 +89,14 @@ while True:
                 elif -120 <= angle <= -60:  # Up
                     direction = "Up"
 
-                print(direction)  # Print direction to console
+                # print(direction)  # Print direction to console
 
     # Display the detected direction on screen
-    cv2.putText(frame, direction, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 
+    cv2.putText(frame, direction, (50, 50), cv2.FONT_HERSHEY_SIMPLEX,
                 1, (0, 255, 0), 2, cv2.LINE_AA)
 
     # Show video frame and exit on 'q'
-    cv2.imshow('Image', frame) 
-    if cv2.waitKey(1) & 0xff == ord('q'): 
-        cv2.destroyAllWindows() 
+    cv2.imshow('Image', frame)
+    if cv2.waitKey(1) & 0xff == ord('q'):
+        cv2.destroyAllWindows()
         break

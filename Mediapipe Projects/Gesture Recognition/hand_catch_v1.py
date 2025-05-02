@@ -1,3 +1,4 @@
+'''Gesture game with pygame'''
 import cv2
 import mediapipe as mp
 import pygame
