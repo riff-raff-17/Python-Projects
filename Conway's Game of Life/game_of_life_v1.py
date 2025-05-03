@@ -68,7 +68,7 @@ def main():
                 if event.key == pygame.K_r: # Reset with "R"
                     global grid
                     grid = np.random.choice([0, 1], size=(ROWS, COLS))
-        if not paused:
+        if not paused: 
             update_grid()
 
         pygame.display.flip()
