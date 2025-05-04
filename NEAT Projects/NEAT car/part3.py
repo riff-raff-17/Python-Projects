@@ -22,17 +22,14 @@ class Car(pygame.sprite.Sprite):
         self.vel_vector = pygame.math.Vector2(0.8, 0)
         self.angle = 0
         self.rotation_vel = 5 
-        self.direction = 0
+        self.direction = 0 
 
 
     def update(self):
         self.drive()
         self.rotate()
-        # +
         for radar_angle in (-60, -30, 0, 30, 60):
             self.radar(radar_angle)
-        # +
-
 
     def drive(self):
         if self.drive_state:
