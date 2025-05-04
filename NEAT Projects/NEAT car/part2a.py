@@ -12,8 +12,8 @@ SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 TRACK = pygame.image.load(os.path.join("Assets", "track.png"))
 
-GRASS_COLOR = pygame.Color(2, 105, 31, 255) # +
-START_POS = (490, 820) # +
+GRASS_COLOR = pygame.Color(2, 105, 31, 255)
+START_POS = (490, 820)
 
 pygame.init()
 
@@ -26,10 +26,9 @@ class Car(pygame.sprite.Sprite):
         self.drive_state = False
         self.vel_vector = pygame.math.Vector2(0.8, 0)
         self.angle = 0
-        self.rotation_vel = 5 # +
-        self.direction = 0 # +
+        self.rotation_vel = 5
+        self.direction = 0
         self.time_since_death = 0
-
 
     def update(self):
         self.drive()
@@ -49,11 +48,10 @@ class Car(pygame.sprite.Sprite):
         self.image = pygame.transform.rotozoom(self.original_image, self.angle, 0.1)
         self.rect = self.image.get_rect(center=self.rect.center)
 
-    # +
     def check_collision(self):
         # Get color of the pixel under the car's center position
         x, y = int(self.rect.centerx), int(self.rect.centery)
-        if 0 <= x < SCREEN_WIDTH and 0 <= y < SCREEN_HEIGHT:  # Ensure within bounds
+        if 0 <= x < SCREEN_WIDTH and 0 <= y < SCREEN_HEIGHT: # Ensure within bounds
             color_at_car = SCREEN.get_at((x, y))
             if color_at_car == GRASS_COLOR:
                 print("Car hit the grass! Respawning...")
@@ -93,12 +91,10 @@ class Car(pygame.sprite.Sprite):
         SCREEN.blit(timer_surface, (SCREEN_WIDTH - 210, 20))
         SCREEN.blit(lap_surface, (SCREEN_WIDTH - 210, 40))
 
-    # +
-
 car = pygame.sprite.GroupSingle(Car())
 
 def eval_genomes():
-    start_time = pygame.time.get_ticks() # +
+    start_time = pygame.time.get_ticks()
     run = True
     while run:
         for event in pygame.event.get():
@@ -112,12 +108,12 @@ def eval_genomes():
         user_input = pygame.key.get_pressed()
         if sum(pygame.key.get_pressed()) <= 1:
             car.sprite.drive_state = False
-            car.sprite.direction = 0 # +
-        
-        # Drive 
+            car.sprite.direction = 0
+
+        # Drive
         if user_input[pygame.K_UP]:
             car.sprite.drive_state = True
-        
+
         # Steer
         if user_input[pygame.K_RIGHT]:
             car.sprite.direction = 1
