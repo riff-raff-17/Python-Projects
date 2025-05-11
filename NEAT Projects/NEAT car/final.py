@@ -62,7 +62,6 @@ class Car(pygame.sprite.Sprite):
         if self.direction == -1:
             self.angle += self.rotation_vel
             self.vel_vector.rotate_ip(-self.rotation_vel)
-
         self.image = pygame.transform.rotozoom(self.original_image, self.angle, 0.1)
         self.rect = self.image.get_rect(center=self.rect.center)
 
@@ -76,7 +75,7 @@ class Car(pygame.sprite.Sprite):
             x = int(self.rect.center[0] + math.cos(math.radians(self.angle + radar_angle)) * length)
             y = int(self.rect.center[1] - math.sin(math.radians(self.angle + radar_angle)) * length)
 
-        # Radar
+        # Visualise radar
         pygame.draw.line(SCREEN, (255, 255, 255, 255), self.rect.center, (x, y), 1)
         pygame.draw.circle(SCREEN, (0, 255, 0, 0), (x, y), 3)
 
@@ -160,7 +159,7 @@ def run(config_path):
     pop.add_reporter(stats)
 
     pop.run(eval_genomes, 50)
-
+    
 if __name__ == '__main__':
     local_dir = os.path.dirname(__file__)
     config_path = os.path.join(local_dir, 'config.txt')

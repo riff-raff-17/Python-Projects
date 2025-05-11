@@ -21,8 +21,8 @@ class Car(pygame.sprite.Sprite):
         self.drive_state = False
         self.vel_vector = pygame.math.Vector2(0.8, 0)
         self.angle = 0
-        self.rotation_vel = 5 
-        self.direction = 0 
+        self.rotation_vel = 5
+        self.direction = 0
 
 
     def update(self):
@@ -55,7 +55,7 @@ class Car(pygame.sprite.Sprite):
             x = int(self.rect.center[0] + math.cos(math.radians(self.angle + radar_angle)) * length)
             y = int(self.rect.center[1] - math.sin(math.radians(self.angle + radar_angle)) * length)
 
-        # + Radar
+        # Visualise radar
         pygame.draw.line(SCREEN, (255, 255, 255, 255), self.rect.center, (x, y), 1)
         pygame.draw.circle(SCREEN, (0, 255, 0, 0), (x, y), 3)
 
@@ -75,9 +75,9 @@ def eval_genomes():
         user_input = pygame.key.get_pressed()
         if sum(pygame.key.get_pressed()) <= 1:
             car.sprite.drive_state = False
-            car.sprite.direction = 0 
-        
-        # Drive 
+            car.sprite.direction = 0
+
+        # Drive
         if user_input[pygame.K_UP]:
             car.sprite.drive_state = True
         
