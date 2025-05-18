@@ -13,7 +13,7 @@ CATCHER_WIDTH, CATCHER_HEIGHT = 100, 20
 CIRCLE_RADIUS = 20
 FPS = 60
 MAX_LIVES = 3  # Maximum number of lives
-BALL_GENERATION_INTERVAL = 30  # Adjust this value to control the interval between new ball generations
+BALL_GENERATION_INTERVAL = 25  # Adjust this value to control the interval between new ball generations
 
 # Colors
 WHITE = (255, 255, 255)
@@ -130,7 +130,7 @@ def main():
             frame_counter = 0
 
         for i, circle in enumerate(circles):
-            speed = speeds[i] + score * 0.1  # Increase speed based on score
+            speed = speeds[i] + score * 0.5  # Increase speed based on score
             circles[i] = (circle[0], circle[1] + speed)  # Update position based on speed
 
             if catcher_rect.colliderect(pygame.Rect(circle[0] - CIRCLE_RADIUS, circle[1] - CIRCLE_RADIUS, CIRCLE_RADIUS * 2, CIRCLE_RADIUS * 2)):
