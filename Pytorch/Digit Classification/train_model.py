@@ -9,19 +9,19 @@ class DigitCNN(nn.Module):
         super().__init__()
         # Convolutional feature extractor
         self.conv = nn.Sequential(
-            # nn.Conv2d(in_channels, out_channels, kernel_size, padding=…)
-            nn.Conv2d(1, 16, 3, padding=1),  # 1×28×28 → 16×28×28
+            # nn.Conv2d(in_channels, out_channels, kernel_size, padding=)
+            nn.Conv2d(1, 16, 3, padding=1),  # 1x28x28 -> 16x28x28
             nn.ReLU(),
-            nn.MaxPool2d(2),                  # 16×28×28 → 16×14×14
-            nn.Conv2d(16, 32, 3, padding=1), # 16×14×14 → 32×14×14
+            nn.MaxPool2d(2),                  # 16x28x28 -> 16x14x14
+            nn.Conv2d(16, 32, 3, padding=1), # 16x14x14 -> 32x14x14
             nn.ReLU(),
-            nn.MaxPool2d(2),                  # 32×14×14 → 32×7×7
+            nn.MaxPool2d(2),                  # 32x14x14 -> 32x7x7
         )
         # Fully‐connected classifier
         self.fc = nn.Sequential(
-            nn.Linear(32 * 7 * 7, 128), # flatten 32×7×7 → 1568 → 128
+            nn.Linear(32 * 7 * 7, 128), # flatten 32x7x7 -> 1568 -> 128
             nn.ReLU(),
-            nn.Linear(128, 10)          # 128 → 10 output logits (digits 0–9)
+            nn.Linear(128, 10)          # 128 -> 10 output logits (digits 0–9)
         )
 
     def forward(self, x):
@@ -55,10 +55,10 @@ if __name__ == "__main__":
             loss.backward()                            # backpropagate
             optimizer.step()                           # update weights
 
-            # update progress bar with current loss value
+            # Wpdate progress bar with current loss value
             loop.set_postfix(loss=loss.item())
 
         print(f"Epoch {epoch + 1} done")
 
-    # 49: Save the trained model’s weights
+    # Save the trained model’s weights
     torch.save(model.state_dict(), "digit_model.pth")

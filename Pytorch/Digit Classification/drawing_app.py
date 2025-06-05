@@ -1,4 +1,3 @@
-# digit_draw_app.py
 import tkinter as tk
 from PIL import Image, ImageDraw, ImageOps
 import torch
@@ -41,7 +40,6 @@ class DrawingApp:
         self.label.config(text="Draw a digit!")
 
     def predict_digit(self):
-        # Convert to 28x28 grayscale
         resized = self.image.resize((28, 28), Image.LANCZOS)
         inverted = ImageOps.invert(resized)
         tensor = torch.tensor(np.array(inverted) / 255.0, dtype=torch.float32).unsqueeze(0).unsqueeze(0)
