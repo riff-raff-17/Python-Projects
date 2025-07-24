@@ -6,9 +6,12 @@ from ugot import ugot
 
 #Connect to UGOT and open camera
 got = ugot.UGOT()
-ip_add = input("What is the UGOT IP address? >")
+# ip_add = input("What is the UGOT IP address? >")
+ip_add = '192.168.1.217'
 got.initialize(ip_add)
 got.open_camera()
+
+min_area = 3000
 
 # Start a while loop 
 while True: 
@@ -73,7 +76,7 @@ while True:
     
     for pic, contour in enumerate(contours): 
         area = cv2.contourArea(contour) 
-        if(area > 300): 
+        if(area > min_area): 
             x, y, w, h = cv2.boundingRect(contour) 
             imageFrame = cv2.rectangle(imageFrame, (x, y), 
                                     (x + w, y + h), 
@@ -90,7 +93,7 @@ while True:
     
     for pic, contour in enumerate(contours): 
         area = cv2.contourArea(contour) 
-        if(area > 300): 
+        if(area > min_area): 
             x, y, w, h = cv2.boundingRect(contour) 
             imageFrame = cv2.rectangle(imageFrame, (x, y), 
                                     (x + w, y + h), 
@@ -106,7 +109,7 @@ while True:
                                         cv2.CHAIN_APPROX_SIMPLE) 
     for pic, contour in enumerate(contours): 
         area = cv2.contourArea(contour) 
-        if(area > 300): 
+        if(area > min_area): 
             x, y, w, h = cv2.boundingRect(contour) 
             imageFrame = cv2.rectangle(imageFrame, (x, y), 
                                     (x + w, y + h), 
@@ -117,7 +120,7 @@ while True:
                         1.0, (255, 0, 0)) 
             
     # Program Termination 
-    cv2.imshow("Multiple Color Detection in Real-TIme", imageFrame) 
+    cv2.imshow("Multiple Color Detection in Real Time", imageFrame) 
     if cv2.waitKey(10) & 0xFF == ord('q'):
         cv2.destroyAllWindows() 
         break

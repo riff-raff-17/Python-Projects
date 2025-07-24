@@ -8,7 +8,8 @@ import numpy as np
 
 # Connect to UGOT and open camera
 got = ugot.UGOT()
-ip_add = input("What is the UGOT IP address? >")
+# ip_add = input("What is the UGOT IP address? >")
+ip_add = '192.168.1.217'
 got.initialize(ip_add)
 got.open_camera()
 
@@ -82,12 +83,18 @@ while True:
             if distance > min_distance_threshold:  # Only detect if above threshold
                 if -30 <= angle <= 30:  # Right
                     direction = "Right"
+                    got.mecanum_turn_speed(2, 30)
                 elif 60 <= angle <= 120:  # Down
                     direction = "Down"
+                    got.mecanum_move_speed(0, 25)
                 elif 150 <= angle or angle <= -150:  # Left
                     direction = "Left"
+                    got.mecanum_turn_speed(3, 30)
                 elif -120 <= angle <= -60:  # Up
                     direction = "Up"
+                    got.mecanum_move_speed(1, 25)
+            else:
+                got.mecanum_stop()
 
                 # print(direction)  # Print direction to console
 

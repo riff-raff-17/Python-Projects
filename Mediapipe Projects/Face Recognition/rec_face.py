@@ -49,7 +49,7 @@ while True:
             cv2.putText(frame, f'{confidence}%', (x, y - 10), 
                         cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
             
-    '''results = face_mesh.process(rgb_frame)
+    results = face_mesh.process(rgb_frame)
 
     if results.multi_face_landmarks:
         for face_landmarks in results.multi_face_landmarks:
