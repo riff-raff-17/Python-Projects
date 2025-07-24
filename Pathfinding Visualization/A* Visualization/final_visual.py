@@ -199,7 +199,7 @@ def get_clicked_pos(pos, rows, width):
     return row, col
 
 def main(win, width):
-    ROWS = 30  # Adjust grid size if needed
+    ROWS = 10  # Adjust grid size if needed
     grid = make_grid(ROWS, width)
 
     start = None
