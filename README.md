@@ -135,3 +135,37 @@ Game Rules
 3. Any live cell with more than three live neighbors dies (overpopulation).
 4. Any dead cell with exactly three live neighbors becomes alive (reproduction).
 
+## 🧮 PyTorch / Digit Classification
+
+This project uses the MNIST dataset to train a neural network with PyTorch for handwritten digit recognition. It also includes an interactive Tkinter drawing app that allows you to test the model in real-time by drawing digits.
+
+### Features:
+
+**Model Training**
+* Trains on the MNIST dataset of handwritten digits (0–9).
+* Configurable network architecture and training parameters.
+* Evaluates accuracy on test data.
+
+**Digit Drawing App**
+* Built with Tkinter for simple GUI interaction.
+* Users can draw digits on a canvas.
+* The trained model predicts the digit in real time.
+* Supports clearing and redrawing for multiple tests.
+
+## 🤖 Ollama / Voice-Controlled Robot
+
+This project integrates Ollama for voice recognition and control of a robot. Spoken commands are converted into actions, allowing hands-free operation and real-time interaction.
+### Features
+
+**Voice Command Processing**
+* Uses Ollama to capture and interpret spoken commands.
+* Commands mapped to robot actions (e.g., move forward, turn left, stop).
+
+**Robot Control** 
+* Interfaces with a robot platform for motion execution.
+* Can be extended for custom commands and behaviors.
+
+**Interactive Feedback**
+* The robot responds in real-time to recognized commands.
+* Logs recognized commands and actions for debugging.
+
