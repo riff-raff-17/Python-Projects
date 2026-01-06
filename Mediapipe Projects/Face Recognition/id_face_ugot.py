@@ -5,7 +5,7 @@ import os, math
 from ugot import ugot
 
 got = ugot.UGOT()
-got.initialize('192.168.1.136')
+got.initialize('192.168.1.89')
 got.open_camera()
 
 def face_confidence(face_distance, face_match_threshold=0.6):
